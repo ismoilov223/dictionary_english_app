@@ -38,16 +38,13 @@ fontsEl.forEach((el) => {
   el.addEventListener("click", () => {
     switch (el.textContent) {
       case "Sans Serif":
-        bodyEl.classList.add("font-sans")
-        fontNameEl.textContent = "Sans Serif";
-        break;
+        fontChange("font-sans", "Sans Serif");
+        break;  
       case "Serif":
-        bodyEl.style.fontFamily = "Serif";
-        fontNameEl.textContent = "Serif";
+        fontChange("Serif", "Serif");
         break;
       case "Mono":
-        bodyEl.style.fontFamily = "Roboto Mono";
-        fontNameEl.textContent = "Mono";
+        fontChange("Roboto Mono", "Mono");
         break;
 
       default:
@@ -56,9 +53,13 @@ fontsEl.forEach((el) => {
     }
   });
 });
-//  }
 
-// function demo(i){
-// }
+bodyEl.style.fontFamily = localStorage.getItem("font");
+fontNameEl.textContent = localStorage.getItem("fontText");
+function fontChange(font, fontTextcont) {
+  bodyEl.style.fontFamily = font;
+  fontNameEl.textContent = fontTextcont;
+  localStorage.setItem("font", font);
+  localStorage.setItem("fontText", fontTextcont);
+}
 // Font change end!
-console.log(color_theme);

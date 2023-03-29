@@ -103,9 +103,11 @@ function DicGetFun(inpVal) {
         dicWordTextEl.textContent = data[0].word;
         dicUrlEl.textContent = data[0].sourceUrls;
         dicWordTransEl.textContent = new_phonetic[0].text;
-        const playDicAudio = new Audio(new_phonetic[0].audio);
+        var textAudio = new Audio(new_phonetic[0].audio);
         audioBtnEl.addEventListener("click", () => {
-          playDicAudio.play();
+          textAudio.play();
+          textAudio = "";
+          console.log('play audio');
         });
         dicMeaningEl.innerHTML = `  <p class="text-base font-normal text-[#757575]">Meaning</p>
        ${data[0].meanings[0].definitions.map((def) => {

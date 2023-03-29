@@ -116,16 +116,14 @@
               <h1
                 class="font-bold text-[32px] text-[#2D2D2D] md:text-[64px] dark:text-[#fff]"
                 id="dic-key"
-              >
-              </h1>
+              ></h1>
               <p
                 class="trenscription text-[#A445ED] text-lg font-normal md:text-2xl"
                 id="dic-trans"
-              >
-              </p>
+              ></p>
             </div>
             <button
-            id="audio-btn"
+              id="audio-btn"
               class="btn w-12 h-12 rounded-full flex items-center justify-center"
             >
               <img
@@ -147,8 +145,10 @@
             </div>
             <div class="meanig-box mt-6" id="meaning-box">
               <p class="text-base font-normal text-[#757575]">Meaning</p>
-              <div class="synonms-row flex items-center gap-6 pt-6 md:pt-10" id="synonm-box">
-              </div>
+              <div
+                class="synonms-row flex items-center gap-6 pt-6 md:pt-10"
+                id="synonm-box"
+              ></div>
             </div>
             <!-- Noun end! -->
             <div
@@ -160,22 +160,33 @@
               ></span>
             </div>
             <div
-            class="meanig-box w-full mt-6 pb-8 border-b-[1px] border-[#E9E9E9] dark:border-[#3A3A3A] md:pb-10"
-            id="meaning-verb"  
+              class="meanig-box w-full mt-6 pb-8 border-b-[1px] border-[#E9E9E9] dark:border-[#3A3A3A] md:pb-10"
+              id="meaning-verb"
+            ></div>
+            <div
+              class="sourse-row flex flex-col md:flex-row gap-2 md:gap-6 pt-6 md:pt-[21px] pb-12"
             >
-            </div>
-            <div class="sourse-row flex flex-col md:flex-row gap-2 md:gap-6 pt-6 md:pt-[21px] pb-12">
               <p class="twxt-[#757575] text-sm font-normal">Source</p>
               <div class="url-box flex gap-2">
                 <p class="text-[#2D2D2D] text-sm font-normal" id="dic-url"></p>
-                <img src="./src/images/url-link-icon.png" alt="">
+                <img src="./src/images/url-link-icon.png" alt="" />
               </div>
             </div>
           </section>
           <!-- Noun end! -->
         </section>
-        <section id="not-found">
-
+        <section id="not-found" class="hidden">
+          <div class="not-found-box w-full text-center pt-9 md:pt-[132px]">
+            <img src="./src/images/not-found-icon.svg" class="mx-auto" alt="" />
+            <div class="text-box pt-5 md:pt-11">
+              <h3 class="font-bold text-xl">No Definitions Found</h3>
+              <p class="text-lg text-center text-[#757575] font-normal pt-3 md:pt-6">
+                Sorry pal, we couldn't find definitions for the word you were
+                looking for. You can try the search again at later time or head
+                to the web instead.
+              </p>
+            </div>
+          </div>
         </section>
       </div>
     </div>

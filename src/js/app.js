@@ -6,6 +6,7 @@ const InpWordEl = document.querySelector("#inp-serch-word");
 const serchBtnEl = document.querySelector("#serch-btn");
 const audioBtnEl = document.querySelector("#audio-btn");
 const ElemntsEl = document.querySelector("#elements-cont");
+const NotFoundEl = document.querySelector("#not-found");
 // const inpWordVal = InpWordEl.value;
 // Serch elementTextContent Start!
 const dicWordTextEl = document.querySelector("#dic-key");
@@ -89,7 +90,6 @@ document.addEventListener("keypress", function (e) {
 });
 function DicGetFun(inpVal) {
   if (inpVal != "" && inpVal != " ") {
-    ElemntsEl.classList.remove("hidden");
     getTodos(inpVal);
     async function getTodos(serchval) {
       try {
@@ -108,16 +108,16 @@ function DicGetFun(inpVal) {
           playDicAudio.play();
         });
         dicMeaningEl.innerHTML = `  <p class="text-base font-normal text-[#757575]">Meaning</p>
-        ${data[0].meanings[0].definitions.map((def) => {
-          return `<div class="meaning-text-box flex gap-5 pt-7 items-center">
+       ${data[0].meanings[0].definitions.map((def) => {
+         return `<div class="meaning-text-box flex gap-5 pt-7 items-center">
           <div
-            class="ul-box w-[5px] h-[5px] rounded-full bg-[#8F19E8]"
+          class="ul-box w-[5px] h-[5px] rounded-full bg-[#8F19E8]"
           ></div>
-            <p class="text-[15px] text-[#2D2D2D] dark:text-[#FFFFFF]">
+          <p class="text-[15px] text-[#2D2D2D] dark:text-[#FFFFFF]">
               ${def.definition}
             </p>
             </div>`;
-        })}
+       })}
         <div class="synonms-row flex items-center gap-6 pt-6 md:pt-10">
           <p class="text-[#757575] font-normal text-base">Synonyms</p>
           <p class="text-[#A445ED] text-base font-bold">
@@ -131,27 +131,29 @@ function DicGetFun(inpVal) {
           ${data[0].meanings[1].definitions.map((def) => {
             return ` <div class="meaning-mano-box flex gap-5 items-center">
               <div
-                class="ul-box w-[5px] h-[5px] rounded-full bg-[#8F19E8]"
-                ></div>
+              class="ul-box w-[5px] h-[5px] rounded-full bg-[#8F19E8]"
+              ></div>
               <p class="text-[15px] text-[#2D2D2D] dark:text-[#FFFFFF]">
               ${def.definition}
-                </p>
-                </div>`;
+              </p>
+              </div>`;
           })}
-          ${data[0].meanings[1].definitions.map((def) => {
-            return `<p
+            ${data[0].meanings[1].definitions.map((def) => {
+              return `<p
               class="text-[#757575] font-normal text-[15px] pt-3 pl-[20px]"
               >
               ${def.example}
-            </p>`;
-          })}
+              </p>`;
+            })}
           </div>`;
         console.log(data);
         InpWordEl.value = "";
+        ElemntsEl.classList.remove("hidden");
       } catch (error) {
-        alert(error);
-        alert("soz topilmadi");
-        InpWordEl.value = "";
+        ElemntsEl.classList.add("hidden");
+        NotFoundEl.classList.remove("hidden");
+        console.log(error);
+        // InpWordEl.value = "";
       }
     }
   } else {
@@ -159,3 +161,4 @@ function DicGetFun(inpVal) {
   }
 }
 // Word Serch end!
+(function () {})();

@@ -1944,6 +1944,14 @@ video {
   padding-top: 28px;
 }
 
+.pt-9 {
+  padding-top: 2.25rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2025,6 +2033,11 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -2517,6 +2530,12 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.after\:translate-x-0::after {
+  content: var(--tw-content);
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .after\:rounded-full::after {
   content: var(--tw-content);
   border-radius: 9999px;
@@ -2692,6 +2711,26 @@ video {
 
   .md\:pt-\[21px\] {
     padding-top: 21px;
+  }
+
+  .md\:pt-\[\] {
+    padding-top: ;
+  }
+
+  .md\:pt-\[13\] {
+    padding-top: 13;
+  }
+
+  .md\:pt-\[132px\] {
+    padding-top: 132px;
+  }
+
+  .md\:pt-11 {
+    padding-top: 2.75rem;
+  }
+
+  .md\:pt-6 {
+    padding-top: 1.5rem;
   }
 
   .md\:text-2xl {

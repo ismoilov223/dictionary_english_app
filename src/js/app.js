@@ -5,6 +5,7 @@ const bodyEl = document.body;
 const InpWordEl = document.querySelector("#inp-serch-word");
 const serchBtnEl = document.querySelector("#serch-btn");
 const audioBtnEl = document.querySelector("#audio-btn");
+const ElemntsEl = document.querySelector("#elements-cont");
 // const inpWordVal = InpWordEl.value;
 // Serch elementTextContent Start!
 const dicWordTextEl = document.querySelector("#dic-key");
@@ -12,6 +13,7 @@ const dicWordTransEl = document.querySelector("#dic-trans");
 const dicMeaningEl = document.querySelector("#meaning-box");
 const dicMeaningVerbEl = document.querySelector("#meaning-verb");
 const dicSynonmEl = document.querySelector("#synonm-box");
+const dicUrlEl = document.querySelector("#dic-url");
 // Serch elementTextVontent end!
 // dom elemnts end!
 // Theme change start!
@@ -67,7 +69,6 @@ fontsEl.forEach((el) => {
     }
   });
 });
-
 bodyEl.style.fontFamily = localStorage.getItem("font");
 fontNameEl.textContent = localStorage.getItem("fontText");
 function fontChange(font, fontTextcont) {
@@ -79,7 +80,7 @@ function fontChange(font, fontTextcont) {
 // Font change end!
 // Word Serch Start!
 serchBtnEl.addEventListener("click", () => {
-  DicGetFun();
+  DicGetFun(InpWordEl.value);
 });
 document.addEventListener("keypress", function (e) {
   if (e.key == "Enter" || e.key == "NumPadenter") {
@@ -88,6 +89,7 @@ document.addEventListener("keypress", function (e) {
 });
 function DicGetFun(inpVal) {
   if (inpVal != "" && inpVal != " ") {
+    ElemntsEl.classList.remove("hidden");
     getTodos(inpVal);
     async function getTodos(serchval) {
       try {
@@ -99,6 +101,7 @@ function DicGetFun(inpVal) {
           return phones.text && phones.audio;
         });
         dicWordTextEl.textContent = data[0].word;
+        dicUrlEl.textContent = data[0].sourceUrls;
         dicWordTransEl.textContent = new_phonetic[0].text;
         const playDicAudio = new Audio(new_phonetic[0].audio);
         audioBtnEl.addEventListener("click", () => {

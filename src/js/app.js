@@ -38,8 +38,11 @@ fontsEl.forEach((el) => {
   el.addEventListener("click", () => {
     switch (el.textContent) {
       case "Sans Serif":
-        fontChange("font-sans", "Sans Serif");
-        break;  
+        fontChange(
+          "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+          " Sans Serif"
+        );
+        break;
       case "Serif":
         fontChange("Serif", "Serif");
         break;

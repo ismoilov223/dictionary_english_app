@@ -107,7 +107,7 @@ function DicGetFun(inpVal) {
         audioBtnEl.addEventListener("click", () => {
           textAudio.play();
           textAudio = "";
-          console.log('play audio');
+          console.log("play audio");
         });
         dicMeaningEl.innerHTML = `  <p class="text-base font-normal text-[#757575]">Meaning</p>
        ${data[0].meanings[0].definitions.map((def) => {
@@ -151,6 +151,7 @@ function DicGetFun(inpVal) {
         console.log(data);
         InpWordEl.value = "";
         ElemntsEl.classList.remove("hidden");
+        NotFoundEl.classList.add("hidden");
       } catch (error) {
         ElemntsEl.classList.add("hidden");
         NotFoundEl.classList.remove("hidden");

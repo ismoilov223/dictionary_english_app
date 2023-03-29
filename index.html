@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dictionary Web app</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="h-full dark:bg-[#050505] font-sans">
+    <div class="cont w-full flex justify-center">
+      <div class="dictr-elemnt-cont w-full px-6 sm:px-10 md:w-[737px]">
+        <div
+          class="navigation-header w-full flex justify-between items-center pt-[28px]"
+        >
+          <img
+            src="./src/images/dictionary_logo.svg"
+            class="logo-icon"
+            alt="Logo image book!"
+          />
+          <div class="btn-elemnt-box flex items-center">
+            <div class="font-box flex justify-between items-center">
+              <!-- component -->
+              <!-- This is an example component -->
+              <div
+                class="max-w-lg mx-auto border-r-[1px] border-[#E9E9E9] pr-4"
+              >
+                <button
+                  class="text-[#2D2D2D] md:text-lg bg-transparent font-bold rounded-lg text-center items-center dark:text-[#fff] flex gap-4"
+                  type="button"
+                  data-dropdown-toggle="dropdown"
+                >
+                 <span id="font-name"> Sans Serif</span>
+                  <img src="./src/images/down-icon.svg" alt="" />
+                </button>
+                <!-- Dropdown menu -->
+                <div
+                  class="hidden bg-white dark:bg-[#1F1F1F] text-base z-50 list-none divide-y divide-gray-100 rounded-2xl shadow-2xl dark:shadow-[#A445ED] my-6 w-[183px]"
+                  id="dropdown"
+                >
+                  <ul class="py-1" aria-labelledby="dropdown">
+                    <li>
+                      <a
+                        href="#"
+                        id="font-one"
+                        class="text-lg block hover:text-[#A445ED] dark:text-[#fff] pt-6 pl-6 font-bold fonts"
+                        >Sans Serif</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        id="font-two"
+                        class="text-lg block hover:text-[#A445ED] dark:text-[#fff] pl-6 font-bold fonts"
+                        >Serif</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        id="font-three"
+                        class="text-lg block hover:text-[#A445ED] dark:text-[#fff] pl-6 pb-6 font-bold fonts"
+                        >Mono</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div
+                class="theme-change-box pl-4 flex items-center justify-between gap-5"
+              >
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    id="theme-toggle"
+                    class="sr-only peer light"
+                  />
+                  <div
+                    class="w-11 h-6 bg-[#757575] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#A445ED]"
+                    id="theme-swichEl"
+                  ></div>
+                </label>
+                <img src="./src/images/moon-icon.svg" alt="Moon icon theme" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="iput-form">
+          <!-- component -->
+          <div
+            class="w-full mt-[42px] bg-[#F4F4F4] dark:bg-[#1F1F1F] dark:text-[#fff] font-bold rounded-2xl flex items-center pr-4"
+          >
+            <input
+              type="search"
+              class="bg-transparent outline-none w-full py-4 px-6"
+              placeholder="Search by name..."
+            />
+            <a href="#">
+              <img src="./src/images/search-icon.svg" alt="" />
+            </a>
+          </div>
+        </div>
+        <div
+          class="dic-audio-row w-full flex items-center justify-between mt-6"
+        >
+          <div class="key-box flex flex-col gap-2">
+            <h1
+              class="font-bold text-[32px] text-[#2D2D2D] md:text-[64px] dark:text-[#fff]"
+              id="dic-key"
+            >
+              keyboard
+            </h1>
+            <p
+              class="trenscription text-[#A445ED] text-lg font-normal md:text-2xl"
+              id="dic-dranscription"
+            >
+              /ˈkiːbɔːd/
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+    <script src="./src/js/app.js"></script>
+  </body>
+</html>

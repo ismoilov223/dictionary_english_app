@@ -8,6 +8,7 @@ const audioBtnEl = document.querySelector("#audio-btn");
 const ElemntsEl = document.querySelector("#elements-cont");
 const NotFoundEl = document.querySelector("#not-found");
 const AudioEl = document.querySelector("#audio-element");
+const inpBoxEl = document.querySelector("#inp-box");
 // const inpWordVal = InpWordEl.value;
 // Serch elementTextContent Start!
 const dicWordTextEl = document.querySelector("#dic-key");
@@ -94,6 +95,7 @@ document.addEventListener("keypress", function (e) {
 });
 function DicGetFun(inpVal) {
   if (inpVal != "" && inpVal != " ") {
+    inpBoxEl.classList.remove("border-2");
     getTodos(inpVal);
     async function getTodos(serchval) {
       try {
@@ -165,7 +167,7 @@ function DicGetFun(inpVal) {
       }
     }
   } else {
-    alert("So'zni kiritng!");
+    inpBoxEl.classList.add("border-2");
   }
 }
 // Word Serch end!

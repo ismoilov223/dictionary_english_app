@@ -7,6 +7,7 @@ const serchBtnEl = document.querySelector("#serch-btn");
 const audioBtnEl = document.querySelector("#audio-btn");
 const ElemntsEl = document.querySelector("#elements-cont");
 const NotFoundEl = document.querySelector("#not-found");
+const AudioEl = document.querySelector("#audio-element");
 // const inpWordVal = InpWordEl.value;
 // Serch elementTextContent Start!
 const dicWordTextEl = document.querySelector("#dic-key");
@@ -21,6 +22,10 @@ const dicUrlEl = document.querySelector("#dic-url");
 const theme_change = document.querySelector("#theme-toggle");
 const theme_switchEl = document.querySelector("#theme-swichEl");
 const color_theme = localStorage.getItem("color-theme");
+// localStorage.setItem("color-theme", "");
+localStorage.setItem("font", "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
+" Sans Serif");
+localStorage.setItem("fontText", "Sans serif");
 if (color_theme == "dark") {
   document.documentElement.classList.add("dark");
   theme_switchEl.classList.add("after:translate-x-full");
@@ -32,8 +37,7 @@ if (color_theme == "dark") {
 theme_change.addEventListener("click", () => {
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
   if (
-    theme_change.classList == "sr-only peer light" &&
-    color_theme == "light"
+    theme_change.classList == "sr-only peer light"
   ) {
     theme_change.classList.remove("light");
     theme_change.classList.add("dark");
@@ -103,11 +107,12 @@ function DicGetFun(inpVal) {
         dicWordTextEl.textContent = data[0].word;
         dicUrlEl.textContent = data[0].sourceUrls;
         dicWordTransEl.textContent = new_phonetic[0].text;
-        var textAudio = new Audio(new_phonetic[0].audio);
+        // var textAudio = new Audio(new_phonetic[0].audio);
         audioBtnEl.addEventListener("click", () => {
-          textAudio.play();
-          textAudio = "";
-          console.log("play audio");
+          AudioEl.src = new_phonetic[0].audio;
+          AudioEl.play();
+          // textAudio = "";
+          // console.log("play audio");
         });
         dicMeaningEl.innerHTML = `  <p class="text-base font-normal text-[#757575]">Meaning</p>
        ${data[0].meanings[0].definitions.map((def) => {

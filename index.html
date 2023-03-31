@@ -95,19 +95,20 @@
         <div class="iput-form">
           <!-- component -->
           <div
-            class="w-full mt-[42px] bg-[#F4F4F4] dark:bg-[#1F1F1F] dark:text-[#fff] font-bold rounded-2xl flex items-center pr-4 border-red-600"
+            class="w-full mt-[42px] bg-[#F4F4F4] dark:bg-[#1F1F1F] dark:text-[#fff] font-bold rounded-2xl flex items-center pr-4 hover:border-[2px] hover:border-cyan-600 transition-colors"
             id="inp-box"
           >
             <input
               type="search"
               class="bg-transparent outline-none w-full py-4 px-6"
-              placeholder="Search by name..."
+              placeholder="Search by word..."
               id="inp-serch-word"
             />
             <a href="#" id="serch-btn">
               <img src="./src/images/search-icon.svg" alt="" />
             </a>
           </div>
+          <p class="text-[#FF5252] text-xl font-normal hidden" id="inp-empty-text">Whoops, can’t be empty…</p>
         </div>
         <section id="elements-cont" class="hidden">
           <div
@@ -186,7 +187,7 @@
           <div class="not-found-box w-full text-center pt-9 md:pt-[132px]">
             <img src="./src/images/not-found-icon.svg" class="mx-auto" alt="" />
             <div class="text-box pt-5 md:pt-11">
-              <h3 class="font-bold text-xl">No Definitions Found</h3>
+              <h3 class="font-bold text-xl dark:text-[#fff]">No Definitions Found</h3>
               <p
                 class="text-lg text-center text-[#757575] font-normal pt-3 md:pt-6"
               >
@@ -198,7 +199,7 @@
           </div>
         </section>
         <section id="loader" class="overflow-hidden hidden">
-          <img src="./src/images/loader-img.png" class="mx-auto loader" alt="">
+          <img src="./src/images/loader-img.png" class="mx-auto loader" alt="" width="500px" height="500px">
         </section>
       </div>
     </div>

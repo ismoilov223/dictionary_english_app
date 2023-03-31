@@ -80,7 +80,7 @@
                     type="checkbox"
                     value=""
                     id="theme-toggle"
-                    class="sr-only peer light"
+                    class="sr-only peer"
                   />
                   <div
                     class="w-11 h-6 bg-[#757575] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#A445ED]"
@@ -127,7 +127,7 @@
               id="audio-btn"
               class="btn w-12 h-12 rounded-full flex items-center justify-center"
             >
-            <audio src="" id="audio-element"></audio>
+              <audio src="" id="audio-element"></audio>
               <img
                 src="./src/images/audio-btn-icon.png"
                 class="md:w-[75px]"
@@ -170,8 +170,13 @@
             >
               <p class="twxt-[#757575] text-sm font-normal">Source</p>
               <div class="url-box flex gap-2">
-                <p class="text-[#2D2D2D] text-sm font-normal" id="dic-url"></p>
-                <img src="./src/images/url-link-icon.png" alt="" />
+                <a href="" target="_blank" id="sour-url-a" class="flex gap-1">
+                  <p
+                    class="text-[#2D2D2D] text-sm font-normal"
+                    id="dic-url"
+                  ></p>
+                  <img src="./src/images/url-link-icon.png" alt="" />
+                </a>
               </div>
             </div>
           </section>
@@ -182,13 +187,18 @@
             <img src="./src/images/not-found-icon.svg" class="mx-auto" alt="" />
             <div class="text-box pt-5 md:pt-11">
               <h3 class="font-bold text-xl">No Definitions Found</h3>
-              <p class="text-lg text-center text-[#757575] font-normal pt-3 md:pt-6">
+              <p
+                class="text-lg text-center text-[#757575] font-normal pt-3 md:pt-6"
+              >
                 Sorry pal, we couldn't find definitions for the word you were
                 looking for. You can try the search again at later time or head
                 to the web instead.
               </p>
             </div>
           </div>
+        </section>
+        <section id="loader" class="overflow-hidden hidden">
+          <img src="./src/images/loader-img.png" class="mx-auto loader" alt="">
         </section>
       </div>
     </div>

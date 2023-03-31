@@ -9,7 +9,8 @@ const ElemntsEl = document.querySelector("#elements-cont");
 const NotFoundEl = document.querySelector("#not-found");
 const AudioEl = document.querySelector("#audio-element");
 const inpBoxEl = document.querySelector("#inp-box");
-// const inpWordVal = InpWordEl.value;
+const LoaderEl = document.querySelector("#loader");
+
 // Serch elementTextContent Start!
 const dicWordTextEl = document.querySelector("#dic-key");
 const dicWordTransEl = document.querySelector("#dic-trans");
@@ -17,37 +18,28 @@ const dicMeaningEl = document.querySelector("#meaning-box");
 const dicMeaningVerbEl = document.querySelector("#meaning-verb");
 const dicSynonmEl = document.querySelector("#synonm-box");
 const dicUrlEl = document.querySelector("#dic-url");
+const dicUrlLinkEl = document.querySelector("#sour-url-a");
+
 // Serch elementTextVontent end!
+
 // dom elemnts end!
+
 // Theme change start!
+
 const theme_change = document.querySelector("#theme-toggle");
 const theme_switchEl = document.querySelector("#theme-swichEl");
-const color_theme = localStorage.getItem("color-theme");
-// localStorage.setItem("color-theme", "");
-localStorage.setItem("font", "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji",
-" Sans Serif");
-localStorage.setItem("fontText", "Sans serif");
-if (color_theme == "dark") {
+const local = localStorage.getItem("color-theme");
+if (local == "dark") {
   document.documentElement.classList.add("dark");
-  theme_switchEl.classList.add("after:translate-x-full");
-  theme_switchEl.classList.add("after:border-white");
-  theme_switchEl.classList.add("bg-[#A445ED]");
 } else {
   document.documentElement.classList.remove("dark");
 }
+console.log(local);
 theme_change.addEventListener("click", () => {
-  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-  if (
-    theme_change.classList == "sr-only peer light"
-  ) {
-    theme_change.classList.remove("light");
-    theme_change.classList.add("dark");
-    document.documentElement.classList.add("dark");
+  const darkClass = document.documentElement.classList.toggle("dark");
+  if (darkClass) {
     localStorage.setItem("color-theme", "dark");
   } else {
-    theme_change.classList.remove("dark");
-    theme_change.classList.add("light");
-    document.documentElement.classList.remove("dark");
     localStorage.setItem("color-theme", "light");
   }
 });
@@ -84,6 +76,15 @@ function fontChange(font, fontTextcont) {
   localStorage.setItem("fontText", fontTextcont);
 }
 // Font change end!
+// Loader start
+function loader(now) {
+  if (now) {
+    LoaderEl.classList.remove("hidden");
+  } else {
+    LoaderEl.classList.add("hidden");
+  }
+}
+// loader end
 // Word Serch Start!
 serchBtnEl.addEventListener("click", () => {
   DicGetFun(InpWordEl.value);
@@ -93,51 +94,54 @@ document.addEventListener("keypress", function (e) {
     DicGetFun(InpWordEl.value);
   }
 });
+
 function DicGetFun(inpVal) {
   if (inpVal != "" && inpVal != " ") {
     inpBoxEl.classList.remove("border-2");
     getTodos(inpVal);
     async function getTodos(serchval) {
       try {
+        loader(true);
         const res = await fetch(
           `https://api.dictionaryapi.dev/api/v2/entries/en/${serchval}`
-        );
-        const data = await res.json();
+          );
+          const data = await res.json();
+          loader(false);
         let new_phonetic = data[0].phonetics.filter((phones) => {
           return phones.text && phones.audio;
         });
         dicWordTextEl.textContent = data[0].word;
         dicUrlEl.textContent = data[0].sourceUrls;
+        dicUrlLinkEl.href = data[0].sourceUrls;
         dicWordTransEl.textContent = new_phonetic[0].text;
-        // var textAudio = new Audio(new_phonetic[0].audio);
         audioBtnEl.addEventListener("click", () => {
           AudioEl.src = new_phonetic[0].audio;
           AudioEl.play();
-          // textAudio = "";
-          // console.log("play audio");
         });
         dicMeaningEl.innerHTML = `  <p class="text-base font-normal text-[#757575]">Meaning</p>
-       ${data[0].meanings[0].definitions.map((def) => {
-         return `<div class="meaning-text-box flex gap-5 pt-7 items-center">
-          <div
-          class="ul-box w-[5px] h-[5px] rounded-full bg-[#8F19E8]"
-          ></div>
-          <p class="text-[15px] text-[#2D2D2D] dark:text-[#FFFFFF]">
-              ${def.definition}
-            </p>
-            </div>`;
-       })}
+         ${data[0].meanings[0].definitions.slice(0, 2).map((def) => {
+           return `<div class="meaning-text-box flex gap-5 pt-7 items-center">
+            <div
+            class="ul-box w-[5px] h-[5px] rounded-full bg-[#8F19E8]"
+            ></div>
+            <p class="text-[15px] text-[#2D2D2D] dark:text-[#FFFFFF]">
+                ${def.definition}
+                ${console.log(def.definition)}
+              </p>
+              </div>`;
+         })}
+
         <div class="synonms-row flex items-center gap-6 pt-6 md:pt-10">
           <p class="text-[#757575] font-normal text-base">Synonyms</p>
           <p class="text-[#A445ED] text-base font-bold">
-          ${data[0].meanings[0].synonyms.map((def) => {
+          ${data[0].meanings[0].synonyms.slice(0, 3).map((def) => {
             return `${def}`;
           })};
           </p>
           </div>`;
         dicMeaningVerbEl.innerHTML = `<p class="text-base font-normal text-[#757575]">Meaning</p>
           <div class="meaning-text-box pt-7">
-          ${data[0].meanings[1].definitions.map((def) => {
+          ${data[0].meanings[1].definitions.slice(0, 3).map((def) => {
             return ` <div class="meaning-mano-box flex gap-5 items-center">
               <div
               class="ul-box w-[5px] h-[5px] rounded-full bg-[#8F19E8]"
@@ -147,7 +151,7 @@ function DicGetFun(inpVal) {
               </p>
               </div>`;
           })}
-            ${data[0].meanings[1].definitions.map((def) => {
+            ${data[0].meanings[1].definitions.slice(0, 1).map((def) => {
               return `<p
               class="text-[#757575] font-normal text-[15px] pt-3 pl-[20px]"
               >
@@ -157,11 +161,11 @@ function DicGetFun(inpVal) {
           </div>`;
         console.log(data);
         InpWordEl.value = "";
-        ElemntsEl.classList.remove("hidden");
         NotFoundEl.classList.add("hidden");
+        ElemntsEl.classList.remove("hidden");
       } catch (error) {
-        ElemntsEl.classList.add("hidden");
         NotFoundEl.classList.remove("hidden");
+        ElemntsEl.classList.add("hidden");
         console.log(error);
         // InpWordEl.value = "";
       }
@@ -171,4 +175,3 @@ function DicGetFun(inpVal) {
   }
 }
 // Word Serch end!
-(function () {})();

@@ -188,6 +188,7 @@ function DicGetFun(inpVal) {
         NotFoundEl.classList.add("hidden");
         ElemntsEl.classList.remove("hidden");
       } catch (error) {
+        InpWordEl.value = "";
         NotFoundEl.classList.remove("hidden");
         ElemntsEl.classList.add("hidden");
         console.log(error);

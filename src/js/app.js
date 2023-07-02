@@ -83,9 +83,8 @@ function fontChange(font, fontTextcont) {
 // Loader start
 function loader(now) {
   if (local == "dark") {
-    LoaderEl.classList.add("hidden")
+    LoaderImgEl.src = "./src/images/loader-dark-img.png";
   } else {
-    LoaderEl.classList.remove("hidden")
     LoaderImgEl.src = "./src/images/loader-img.png";
   }
   if (now) {

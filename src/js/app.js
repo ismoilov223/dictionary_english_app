@@ -83,7 +83,7 @@ function fontChange(font, fontTextcont) {
 // Loader start
 function loader(now) {
   if (local == "dark") {
-    LoaderImgEl.src = "./src/images/loader-img.png";
+    // LoaderImgEl.src = "./src/images/loader-img.png";
   } else {
     LoaderImgEl.src = "./src/images/loader-img.png";
   }
